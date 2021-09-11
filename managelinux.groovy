@@ -1,9 +1,15 @@
-node('worker1'){
-    stage("Install Epel"){
+properties([
+    parameters([
+        string(description: 'Provide Linux VM IP', name: 'IPADDRESS', trim: true),
+        ])
+    ])
+
+node("worker1"){
+    stage("Intall Epel"){
         withCredentials([sshUserPrivateKey(credentialsId: 'masterkey', keyFileVariable: 'SSHKEY', usernameVariable: 'SSHUSERNAME')]) {
-            sh '''
-                ssh -o StrictHostKeyChecking=no -i $SSHKEY root@137.184.97.229 "yum install epel-release -y"
-            '''
-        }
+            sh """
+                ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${params.IPADDRESS} "hostname"
+                """
+        }        
     }
 }
