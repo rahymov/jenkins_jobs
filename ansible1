@@ -1,0 +1,1 @@
+ansible  -i "147.182.214.211," all -m ping
