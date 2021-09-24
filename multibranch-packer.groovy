@@ -1,8 +1,8 @@
-if(env.BRANCH ==~ "dev-.*"){
+if(env.BRANCH_NAME ==~ "dev-.*"){
     environment="dev"
     region="us-east-1"
 }
-else if(env.BRANCH ==~ "qa-.*"){
+else if(env.BRANCH_NAME ==~ "qa-.*"){
     environment="qa"
     region="us-east-2"
 }
