@@ -33,7 +33,7 @@ podTemplate(label: 'docker', name: 'docker', namespace: 'tools', yaml: podtempla
                     sh 'docker build -t $REGISTRY_USERNAME/flaskex .'
                 }
 
-                stage("Test"){
+                stage("Push Image"){
                     sh '''
                         docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD
                         docker push $REGISTRY_USERNAME/flaskex
